@@ -1,0 +1,24 @@
+﻿<Window x:Class="CsvConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CsvConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="623.596">
+    <Grid Margin="0,0,21,0">
+        <Button Content="Wybierz plik .csv" HorizontalAlignment="Left" Margin="360,10,0,0" VerticalAlignment="Top" Width="116" Height="23" Click="FileSelect_Click"/>
+        <TextBox Name="fileNameTextBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="(wybierz plik)" VerticalAlignment="Top" Width="345"/>
+        <Button Name="processBtn" Content="Procesuj" HorizontalAlignment="Left" Margin="263,289,0,0" VerticalAlignment="Top" Width="104" Visibility="Visible" Click="Process_Click"/>
+
+        <ProgressBar Name="progressBarCtrl" HorizontalAlignment="Left" Height="20" Margin="10,289,0,0" VerticalAlignment="Top" Width="248" Maximum="100" Minimum="0"/>
+        <ListBox Name="listBox" Height="246" Margin="10,38,119,0" VerticalAlignment="Top" />
+        <Button Content="Przerwij" HorizontalAlignment="Left" Margin="372,289,0,0" VerticalAlignment="Top" Width="104" Click="Cancel_Click"/>
+        <Button Name="previousBtn" Content="poprzednia" HorizontalAlignment="Left" Margin="481,198,0,0" VerticalAlignment="Top" Width="75" Click="Previous_Click" Height="25"/>
+        <Button Name="nextBtn" Content="kolejna" HorizontalAlignment="Left" Margin="481,228,0,0" VerticalAlignment="Top" Width="75" Click="Next_Click" Height="25"/>
+        <Button Name="firstBtn" Content="pierwsza" HorizontalAlignment="Left" Margin="481,168,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="First_Click"/>
+        <Button Name="lastBtn" Content="ostatnia" HorizontalAlignment="Left" Margin="481,259,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Last_Click"/>
+        <Label Name="infoLbl" Content="" HorizontalAlignment="Left" Margin="481,137,0,0" VerticalAlignment="Top" Width="88"/>
+
+    </Grid>
+</Window>
