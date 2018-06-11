@@ -141,7 +141,7 @@ namespace CsvConverter
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            int pageNr = pageNumber > 1 ? pageNumber + 1 : pageNumber;
+            int pageNr = pageNumber < pageCount ? pageNumber + 1 : pageNumber;
             GetPage(pageNr);
         }
 
