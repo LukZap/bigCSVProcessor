@@ -24,8 +24,7 @@ namespace CsvConverter
     /// </summary>
     public partial class MainWindow : Window
     {
-        CancellationTokenSource tokenSource;
-        CancellationToken token;
+        CancellationTokenSource cts;
 
         bool fileSelected = false;
         string fileToProcess;
@@ -87,13 +86,12 @@ namespace CsvConverter
 
         private async void Process_Click(object sender, RoutedEventArgs e)
         {
-            tokenSource = new CancellationTokenSource();
-            token = tokenSource.Token;
+            cts = new CancellationTokenSource();
 
             try
             {
                 processor.ProgressUpdate += UpdateProgressBar;
-                await processor.Process(fileToProcess, token);
+                await Task.Run(() => processor.Process(fileToProcess, cts.Token));
             }
             catch (FileFormatException)
             {
@@ -109,7 +107,7 @@ namespace CsvConverter
                 int listCount = processor.FilteredList.Count();
                 pageCount = (int)Math.Ceiling(listCount/(double)pageSize);
                 UpdateProgressBar(null, new ProgressEventArgs { Progress = 0 });
-                tokenSource.Dispose();
+                cts.Dispose();
             }
             
             GetPage(1);
@@ -130,7 +128,7 @@ namespace CsvConverter
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            tokenSource.Cancel();
+            cts.Cancel();
         }
 
         private void Previous_Click(object sender, RoutedEventArgs e)
